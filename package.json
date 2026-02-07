@@ -1,0 +1,65 @@
+{
+  "name": "n8n-nodes-dataforb2b",
+  "version": "1.0.0",
+  "description": "n8n node for DataForB2B API - Search people, companies and enrich B2B data",
+  "keywords": [
+    "n8n-community-node-package",
+    "n8n",
+    "b2b",
+    "dataforb2b",
+    "lead-generation",
+    "enrichment",
+    "api"
+  ],
+  "license": "MIT",
+  "homepage": "https://www.dataforb2b.ai",
+  "author": {
+    "name": "DataForB2B",
+    "email": "contact@dataforb2b.ai"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/DataForB2B/n8n-node.git"
+  },
+  "engines": {
+    "node": ">=18.10",
+    "pnpm": ">=8.6"
+  },
+  "packageManager": "pnpm@8.6.2",
+  "main": "index.js",
+  "scripts": {
+    "build": "tsc && gulp build:icons",
+    "build:global": "npx tsc && npx gulp build:icons",
+    "dev": "tsc --watch",
+    "format": "prettier nodes credentials --write",
+    "lint": "eslint \"nodes/**/*.ts\" \"credentials/**/*.ts\"",
+    "lintfix": "eslint \"nodes/**/*.ts\" \"credentials/**/*.ts\" --fix",
+    "fix": "npm run format && npm run lintfix",
+    "prepublishOnly": "npm run build"
+  },
+  "files": [
+    "dist"
+  ],
+  "n8n": {
+    "n8nNodesApiVersion": 1,
+    "credentials": [
+      "dist/credentials/DataForB2BApi.credentials.js"
+    ],
+    "nodes": [
+      "dist/nodes/DataForB2B/DataForB2B.node.js"
+    ]
+  },
+  "devDependencies": {
+    "@typescript-eslint/eslint-plugin": "^8.38.0",
+    "@typescript-eslint/parser": "^8.38.0",
+    "eslint": "^8.57.1",
+    "eslint-plugin-n8n-nodes-base": "^1.11.0",
+    "gulp": "^4.0.2",
+    "prettier": "^2.7.1",
+    "typescript": "^4.8.4"
+  },
+  "peerDependencies": {
+    "n8n-workflow": "*"
+  },
+  "dependencies": {}
+}
