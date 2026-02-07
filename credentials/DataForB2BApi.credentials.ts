@@ -35,15 +35,10 @@ export class DataForB2BApi implements ICredentialType {
   test: ICredentialTestRequest = {
     request: {
       baseURL: "https://api.dataforb2b.ai",
-      url: "/search/llm/filters",
-      method: "POST",
+      url: "/account",
+      method: "GET",
       headers: {
-        "Content-Type": "application/json",
         "api_key": "={{$credentials.apiKey}}",
-      },
-      body: {
-        query: "test",
-        category: "people",
       },
     },
   };

@@ -12,7 +12,7 @@ export class DataForB2B implements INodeType {
   description: INodeTypeDescription = {
     displayName: "DataForB2B",
     name: "dataForB2B",
-    icon: "file:dataforb2b.svg",
+    icon: "file:dataforb2b.png",
     group: ["transform"],
     version: 1,
     description: "Access B2B data - Search people, companies and enrich profiles",
