@@ -300,7 +300,6 @@ export class DataForB2B implements INodeType {
     const returnData: INodeExecutionData[] = [];
 
     for (let i = 0; i < items.length; i++) {
-      const resource = this.getNodeParameter("resource", i) as string;
       const operation = this.getNodeParameter("operation", i) as string;
 
       try {
@@ -312,7 +311,7 @@ export class DataForB2B implements INodeType {
           case "searchPeople":
             endpoint = "/search/people";
             body = {
-              filters: JSON.parse(this.getNodeParameter("filters", i) as string),
+              filters: this.getNodeParameter("filters", i),
               count: this.getNodeParameter("count", i) as number,
               offset: this.getNodeParameter("offset", i) as number,
             };
@@ -321,7 +320,7 @@ export class DataForB2B implements INodeType {
           case "searchCompanies":
             endpoint = "/search/company";
             body = {
-              filters: JSON.parse(this.getNodeParameter("filters", i) as string),
+              filters: this.getNodeParameter("filters", i),
               count: this.getNodeParameter("count", i) as number,
               offset: this.getNodeParameter("offset", i) as number,
             };
