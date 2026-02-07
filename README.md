@@ -78,5 +78,5 @@ MIT - See [LICENSE](LICENSE)
 
 ## Support
 
-- Website: [dataforb2b.ai](https://www.dataforb2b.ai)
+- Website: [dataforb2b.ai](https://dataforb2b.ai)
 - Documentation: [docs.dataforb2b.ai](https://docs.dataforb2b.ai)

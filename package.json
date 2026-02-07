@@ -1,6 +1,6 @@
 {
   "name": "n8n-nodes-dataforb2b",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "n8n node for DataForB2B API - Search people, companies and enrich B2B data",
   "keywords": [
     "n8n-community-node-package",
@@ -12,7 +12,7 @@
     "api"
   ],
   "license": "MIT",
-  "homepage": "https://www.dataforb2b.ai",
+  "homepage": "https://dataforb2b.ai",
   "author": {
     "name": "DataForB2B",
     "email": "contact@dataforb2b.ai"
