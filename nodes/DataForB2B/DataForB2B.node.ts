@@ -469,8 +469,8 @@ export class DataForB2B implements INodeType {
             const conditions = (peopleFilters.conditions || []).map((cond) => {
               const apiOperator = operatorMap[cond.operator] || cond.operator;
               const condition: any = {
-                field: cond.field,
-                op: apiOperator,
+                column: cond.field,
+                type: apiOperator,
                 value: apiOperator === "in" || apiOperator === "not_in"
                   ? cond.value.split(",").map((v: string) => v.trim())
                   : cond.value,
@@ -484,7 +484,6 @@ export class DataForB2B implements INodeType {
             body = {
               filters: { op: filterLogic, conditions },
               count: this.getNodeParameter("count", i) as number,
-              offset: this.getNodeParameter("offset", i) as number,
             };
             break;
           }
@@ -497,8 +496,8 @@ export class DataForB2B implements INodeType {
             const conditions = (companyFilters.conditions || []).map((cond) => {
               const apiOperator = operatorMap[cond.operator] || cond.operator;
               const condition: any = {
-                field: cond.field,
-                op: apiOperator,
+                column: cond.field,
+                type: apiOperator,
                 value: apiOperator === "in" || apiOperator === "not_in"
                   ? cond.value.split(",").map((v: string) => v.trim())
                   : cond.value,
@@ -512,7 +511,6 @@ export class DataForB2B implements INodeType {
             body = {
               filters: { op: filterLogic, conditions },
               count: this.getNodeParameter("count", i) as number,
-              offset: this.getNodeParameter("offset", i) as number,
             };
             break;
           }
