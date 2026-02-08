@@ -489,7 +489,7 @@ export class DataForB2B implements INodeType {
           }
 
           case "searchCompanies": {
-            endpoint = "/search/company";
+            endpoint = "/search/companies";
             const filterLogic = this.getNodeParameter("filterLogic", i) as string;
             const companyFilters = this.getNodeParameter("companyFilters", i) as { conditions?: Array<{ field: string; operator: string; value: string; value2?: string }> };
 
