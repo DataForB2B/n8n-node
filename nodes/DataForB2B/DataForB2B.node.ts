@@ -11,8 +11,8 @@ const DATAFORB2B_API_BASE_URL = "https://api.dataforb2b.ai";
 
 // Operators disponibles par type
 const textOperators: INodePropertyOptions[] = [
-  { name: "Equals", value: "=" },
-  { name: "Not Equals", value: "!=" },
+  { name: "Equals", value: "eq" },
+  { name: "Not Equals", value: "neq" },
   { name: "Contains", value: "like" },
   { name: "Not Contains", value: "not_like" },
   { name: "In List", value: "in" },
@@ -20,14 +20,29 @@ const textOperators: INodePropertyOptions[] = [
 ];
 
 const numericOperators: INodePropertyOptions[] = [
-  { name: "Equals", value: "=" },
-  { name: "Not Equals", value: "!=" },
-  { name: "Greater Than", value: ">" },
-  { name: "Greater Than or Equal", value: ">=" },
-  { name: "Less Than", value: "<" },
-  { name: "Less Than or Equal", value: "<=" },
+  { name: "Equals", value: "eq" },
+  { name: "Not Equals", value: "neq" },
+  { name: "Greater Than", value: "gt" },
+  { name: "Greater Than or Equal", value: "gte" },
+  { name: "Less Than", value: "lt" },
+  { name: "Less Than or Equal", value: "lte" },
   { name: "Between", value: "between" },
 ];
+
+// Map UI operator values to API operator values
+const operatorMap: Record<string, string> = {
+  eq: "=",
+  neq: "!=",
+  gt: ">",
+  gte: ">=",
+  lt: "<",
+  lte: "<=",
+  like: "like",
+  not_like: "not_like",
+  in: "in",
+  not_in: "not_in",
+  between: "between",
+};
 
 // People filter fields
 const peopleFilterFields: INodePropertyOptions[] = [
@@ -452,10 +467,11 @@ export class DataForB2B implements INodeType {
             const peopleFilters = this.getNodeParameter("peopleFilters", i) as { conditions?: Array<{ field: string; operator: string; value: string; value2?: string }> };
 
             const conditions = (peopleFilters.conditions || []).map((cond) => {
+              const apiOperator = operatorMap[cond.operator] || cond.operator;
               const condition: any = {
                 field: cond.field,
-                op: cond.operator,
-                value: cond.operator === "in" || cond.operator === "not_in"
+                op: apiOperator,
+                value: apiOperator === "in" || apiOperator === "not_in"
                   ? cond.value.split(",").map((v: string) => v.trim())
                   : cond.value,
               };
@@ -479,10 +495,11 @@ export class DataForB2B implements INodeType {
             const companyFilters = this.getNodeParameter("companyFilters", i) as { conditions?: Array<{ field: string; operator: string; value: string; value2?: string }> };
 
             const conditions = (companyFilters.conditions || []).map((cond) => {
+              const apiOperator = operatorMap[cond.operator] || cond.operator;
               const condition: any = {
                 field: cond.field,
-                op: cond.operator,
-                value: cond.operator === "in" || cond.operator === "not_in"
+                op: apiOperator,
+                value: apiOperator === "in" || apiOperator === "not_in"
                   ? cond.value.split(",").map((v: string) => v.trim())
                   : cond.value,
               };
