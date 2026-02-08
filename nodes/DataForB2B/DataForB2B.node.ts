@@ -343,6 +343,16 @@ export class DataForB2B implements INodeType {
           show: { resource: ["search"], operation: ["searchPeople", "searchCompanies"] },
         },
       },
+      {
+        displayName: "Enrich Live",
+        name: "enrichLive",
+        type: "boolean",
+        default: false,
+        description: "Whether to enrich results with live data (additional credits)",
+        displayOptions: {
+          show: { resource: ["search"], operation: ["searchPeople", "searchCompanies"] },
+        },
+      },
 
       // === AGENTIC SEARCH PARAMETERS ===
       {
@@ -484,6 +494,8 @@ export class DataForB2B implements INodeType {
             body = {
               filters: { op: filterLogic, conditions },
               count: this.getNodeParameter("count", i) as number,
+              offset: this.getNodeParameter("offset", i) as number,
+              enrich_live: this.getNodeParameter("enrichLive", i) as boolean,
             };
             break;
           }
@@ -511,6 +523,8 @@ export class DataForB2B implements INodeType {
             body = {
               filters: { op: filterLogic, conditions },
               count: this.getNodeParameter("count", i) as number,
+              offset: this.getNodeParameter("offset", i) as number,
+              enrich_live: this.getNodeParameter("enrichLive", i) as boolean,
             };
             break;
           }
