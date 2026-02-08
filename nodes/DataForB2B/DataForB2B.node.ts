@@ -347,7 +347,7 @@ export class DataForB2B implements INodeType {
         displayName: "Enrich Live",
         name: "enrichLive",
         type: "boolean",
-        default: false,
+        default: true,
         description: "Whether to enrich results with live data (additional credits)",
         displayOptions: {
           show: { resource: ["search"], operation: ["searchPeople", "searchCompanies"] },
