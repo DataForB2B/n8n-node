@@ -1,6 +1,6 @@
 {
   "name": "n8n-nodes-dataforb2b",
-  "version": "1.0.6",
+  "version": "1.0.7",
   "description": "n8n node for DataForB2B API - Search people, companies and enrich B2B data",
   "keywords": [
     "n8n-community-node-package",
