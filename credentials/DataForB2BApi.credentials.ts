@@ -8,6 +8,7 @@ import {
 export class DataForB2BApi implements ICredentialType {
   name = "dataForB2BApi";
   displayName = "DataForB2B API";
+  icon = "file:dataforb2b.png" as const;
   documentationUrl = "https://docs.dataforb2b.ai/";
 
   properties: INodeProperties[] = [
