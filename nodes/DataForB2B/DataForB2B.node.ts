@@ -4,12 +4,13 @@ import {
   INodeType,
   INodeTypeDescription,
   NodeApiError,
+  NodeConnectionType,
   INodePropertyOptions,
 } from "n8n-workflow";
 
 const DATAFORB2B_API_BASE_URL = "https://api.dataforb2b.ai";
 
-// Operators disponibles par type
+// Available operators by type
 const textOperators: INodePropertyOptions[] = [
   { name: "Equals", value: "eq" },
   { name: "Not Equals", value: "neq" },
@@ -131,19 +132,21 @@ const companyFilterFields: INodePropertyOptions[] = [
 ];
 
 export class DataForB2B implements INodeType {
-  description: INodeTypeDescription = {
+  description: INodeTypeDescription = ({
     displayName: "DataForB2B",
     name: "dataForB2B",
     icon: "file:dataforb2b.png",
     group: ["transform"],
     version: 1,
+    subtitle: '={{$parameter["operation"] + ": " + $parameter["resource"]}}',
+    usableAsTool: true,
     description: "Access B2B data - Search people, companies and enrich profiles",
     defaults: {
       name: "DataForB2B",
       color: "#6366f1",
     },
-    inputs: ["main"],
-    outputs: ["main"],
+    inputs: [NodeConnectionType.Main],
+    outputs: [NodeConnectionType.Main],
     credentials: [
       {
         name: "dataForB2BApi",
@@ -158,8 +161,8 @@ export class DataForB2B implements INodeType {
         type: "options",
         noDataExpression: true,
         options: [
-          { name: "Search", value: "search" },
           { name: "Enrich", value: "enrich" },
+          { name: "Search", value: "search" },
         ],
         default: "search",
       },
@@ -174,9 +177,9 @@ export class DataForB2B implements INodeType {
           show: { resource: ["search"] },
         },
         options: [
-          { name: "Search People", value: "searchPeople", description: "Find professionals using 50+ filters", action: "Search people" },
-          { name: "Search Companies", value: "searchCompanies", description: "Find companies with advanced filters", action: "Search companies" },
           { name: "Agentic Search (LLM)", value: "agenticSearch", description: "Natural language queries with AI interpretation", action: "Agentic search LLM" },
+          { name: "Search Companies", value: "searchCompanies", description: "Find companies with advanced filters", action: "Search companies" },
+          { name: "Search People", value: "searchPeople", description: "Find professionals using 50+ filters", action: "Search people" },
           { name: "Text to Filters", value: "textToFilters", description: "Convert natural language to structured filters", action: "Text to filters" },
         ],
         default: "searchPeople",
@@ -192,8 +195,8 @@ export class DataForB2B implements INodeType {
           show: { resource: ["enrich"] },
         },
         options: [
-          { name: "Enrich Profile", value: "enrichProfile", description: "Retrieve detailed professional data", action: "Enrich profile" },
           { name: "Enrich Company", value: "enrichCompany", description: "Retrieve comprehensive company information", action: "Enrich company" },
+          { name: "Enrich Profile", value: "enrichProfile", description: "Retrieve detailed professional data", action: "Enrich profile" },
         ],
         default: "enrichProfile",
       },
@@ -457,7 +460,7 @@ export class DataForB2B implements INodeType {
         },
       },
     ],
-  };
+  }) as INodeTypeDescription;
 
   async execute(this: IExecuteFunctions): Promise<INodeExecutionData[][]> {
     const items = this.getInputData();

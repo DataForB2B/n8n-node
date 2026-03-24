@@ -1,6 +1,6 @@
 {
   "name": "n8n-nodes-dataforb2b",
-  "version": "1.0.10",
+  "version": "1.0.11",
   "description": "n8n node for DataForB2B API - Search people, companies and enrich B2B data",
   "keywords": [
     "n8n-community-node-package",
@@ -55,11 +55,11 @@
     "eslint": "^8.57.1",
     "eslint-plugin-n8n-nodes-base": "^1.11.0",
     "gulp": "^4.0.2",
+    "n8n-workflow": "1.62.0",
     "prettier": "^2.7.1",
     "typescript": "^4.8.4"
   },
   "peerDependencies": {
     "n8n-workflow": "*"
-  },
-  "dependencies": {}
+  }
 }
