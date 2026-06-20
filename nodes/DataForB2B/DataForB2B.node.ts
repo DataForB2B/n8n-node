@@ -50,8 +50,6 @@ const peopleFilterFields: INodePropertyOptions[] = [
   // Profile
   { name: "First Name", value: "first_name" },
   { name: "Last Name", value: "last_name" },
-  { name: "Profile Headline", value: "profile_headline" },
-  { name: "Summary", value: "summary" },
   { name: "Profile Location", value: "profile_location" },
   { name: "Profile Country", value: "profile_country" },
   { name: "Profile Industry", value: "profile_industry" },
@@ -61,18 +59,20 @@ const peopleFilterFields: INodePropertyOptions[] = [
   { name: "Current Company", value: "current_company" },
   { name: "Current Title", value: "current_title" },
   { name: "Current Job Location", value: "current_job_location" },
-  { name: "Current Job Country", value: "current_job_country" },
   { name: "Current Company Industry", value: "current_company_industry" },
+  { name: "Current Company Category", value: "current_company_category" },
   { name: "Current Company Size", value: "current_company_size" },
   { name: "Current Company ID", value: "current_company_id" },
   { name: "Current Employment Type", value: "current_employment_type" },
   { name: "Years in Current Position", value: "years_in_current_position" },
   { name: "Years at Current Company", value: "years_at_current_company" },
+  { name: "Current Company Has Funding", value: "current_company_has_funding" },
+  { name: "Current Company Funding Stage", value: "current_company_funding_stage" },
+  { name: "Current Company Investor", value: "current_company_investor" },
   // Past Jobs
   { name: "Past Company", value: "past_company" },
   { name: "Past Title", value: "past_title" },
   { name: "Past Job Location", value: "past_job_location" },
-  { name: "Past Job Country", value: "past_job_country" },
   { name: "Past Company Industry", value: "past_company_industry" },
   { name: "Past Company Size", value: "past_company_size" },
   { name: "Past Company ID", value: "past_company_id" },
@@ -129,6 +129,11 @@ const companyFilterFields: INodePropertyOptions[] = [
   { name: "Follower Count", value: "follower_count" },
   { name: "Page Verified", value: "page_verified" },
   { name: "Category", value: "category" },
+  // Funding
+  { name: "Last Funding Amount (USD)", value: "last_funding_amount_usd" },
+  { name: "Last Funding Date", value: "last_funding_date" },
+  { name: "Funding Stage", value: "funding_stage_normalized" },
+  { name: "Has Funding", value: "has_funding" },
 ];
 
 export class DataForB2B implements INodeType {
@@ -141,6 +146,24 @@ export class DataForB2B implements INodeType {
     subtitle: '={{$parameter["operation"] + ": " + $parameter["resource"]}}',
     usableAsTool: true,
     description: "Access B2B data - Search people, companies and enrich profiles",
+    codex: {
+      categories: ["Sales"],
+      subcategories: {
+        Sales: ["Lead Generation", "Enrichment"],
+      },
+      alias: [
+        "Prospecting",
+        "Lead Generation",
+        "Leads",
+        "B2B",
+        "LinkedIn",
+        "Sales Navigator",
+        "Enrichment",
+        "People Search",
+        "Company Search",
+        "Email Finder",
+      ],
+    },
     defaults: {
       name: "DataForB2B",
       color: "#6366f1",

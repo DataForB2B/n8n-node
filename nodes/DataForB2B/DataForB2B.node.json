@@ -1,0 +1,28 @@
+{
+  "node": "n8n-nodes-dataforb2b.dataForB2B",
+  "nodeVersion": "1.0",
+  "codexVersion": "1.0",
+  "categories": ["Sales"],
+  "subcategories": {
+    "Sales": ["Lead Generation", "Enrichment"]
+  },
+  "alias": [
+    "Prospecting",
+    "Lead Generation",
+    "Leads",
+    "B2B",
+    "LinkedIn",
+    "Sales Navigator",
+    "Enrichment",
+    "People Search",
+    "Company Search",
+    "Email Finder"
+  ],
+  "resources": {
+    "primaryDocumentation": [
+      {
+        "url": "https://api.dataforb2b.ai"
+      }
+    ]
+  }
+}

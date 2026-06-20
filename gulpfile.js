@@ -1,7 +1,7 @@
 const { src, dest } = require('gulp');
 
 function buildIcons() {
-    return src(['nodes/**/*.svg', 'nodes/**/*.png'])
+    return src(['nodes/**/*.svg', 'nodes/**/*.png', 'nodes/**/*.node.json'])
         .pipe(dest('dist/nodes'));
 }
 
