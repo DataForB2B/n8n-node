@@ -35,7 +35,8 @@
     "lint": "eslint \"nodes/**/*.ts\" \"credentials/**/*.ts\"",
     "lintfix": "eslint \"nodes/**/*.ts\" \"credentials/**/*.ts\" --fix",
     "fix": "npm run format && npm run lintfix",
-    "prepublishOnly": "npm run build"
+    "prepublishOnly": "npm run build",
+    "release": "npx -y @n8n/node-cli@latest release"
   },
   "files": [
     "dist"
